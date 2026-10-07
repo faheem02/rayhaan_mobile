@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'product_condition' => $_POST['product_condition'] ?? 'New',
         'purchase_price' => (float)($_POST['purchase_price'] ?? 0),
         'sale_price' => (float)($_POST['sale_price'] ?? 0),
+        'opening_stock' => max(0, (int)($_POST['opening_stock'] ?? 0)),
         'stock_quantity' => max(0, (int)($_POST['stock_quantity'] ?? 0)),
         'min_stock_level' => max(0, (int)($_POST['min_stock_level'] ?? 0)),
         'unit' => trim($_POST['unit'] ?? 'pcs') ?: 'pcs',
@@ -149,8 +150,9 @@ require_once '../../includes/header.php';
           <hr>
           <h6 class="font-weight-bold text-primary"><i class="fas fa-coins"></i> Pricing &amp; Stock</h6>
           <div class="row">
-            <div class="col-md-3 form-group"><label class="form-label">Purchase Price</label><input type="number" name="purchase_price" class="form-control" step="0.01" min="0" value="<?= $item['purchase_price'] ?>"></div>
-            <div class="col-md-3 form-group"><label class="form-label">Sale Price</label><input type="number" name="sale_price" class="form-control" step="0.01" min="0" value="<?= $item['sale_price'] ?>"></div>
+            <div class="col-md-2 form-group"><label class="form-label">Purchase Price</label><input type="number" name="purchase_price" class="form-control" step="0.01" min="0" value="<?= $item['purchase_price'] ?>"></div>
+            <div class="col-md-2 form-group"><label class="form-label">Sale Price</label><input type="number" name="sale_price" class="form-control" step="0.01" min="0" value="<?= $item['sale_price'] ?>"></div>
+            <div class="col-md-2 form-group"><label class="form-label">Opening Stock</label><input type="number" name="opening_stock" class="form-control" min="0" value="<?= (int)($item['opening_stock'] ?? 0) ?>"></div>
             <div class="col-md-2 form-group"><label class="form-label">Stock Qty</label><input type="number" name="stock_quantity" class="form-control" min="0" value="<?= (int)$item['stock_quantity'] ?>"></div>
             <div class="col-md-2 form-group"><label class="form-label">Min Stock Level</label><input type="number" name="min_stock_level" class="form-control" min="0" value="<?= (int)$item['min_stock_level'] ?>"></div>
             <div class="col-md-2 form-group"><label class="form-label">Unit</label><input type="text" name="unit" class="form-control" value="<?= htmlspecialchars($item['unit'] ?? 'pcs') ?>"></div>

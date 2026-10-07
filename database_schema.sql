@@ -162,6 +162,7 @@ CREATE TABLE products (
     product_condition VARCHAR(50) DEFAULT 'New' COMMENT 'New, Used, Refurbished',
     purchase_price  DECIMAL(12,2) NOT NULL DEFAULT 0.00,
     sale_price      DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    opening_stock   INT NOT NULL DEFAULT 0,
     stock_quantity  INT NOT NULL DEFAULT 0,
     min_stock_level INT DEFAULT 0 COMMENT 'Low stock alert threshold',
     unit            VARCHAR(20) DEFAULT 'pcs',

@@ -85,10 +85,11 @@
         <span>Inventory Management</span>
         <span class="arrow"><i class="fas fa-chevron-right"></i></span>
       </a>
-      <div class="collapse" id="collapseInventory">
+      <div class="collapse <?= (str_contains($_SERVER['PHP_SELF'],'inventory/') && !str_contains($_SERVER['PHP_SELF'],'supplier')) ? 'show' : '' ?>" id="collapseInventory">
         <div class="collapse-inner">
           <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/purchases') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/purchases.php"><i class="fas fa-truck"></i> Purchases</a>
-          <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/products.php') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/products.php"><i class="fas fa-boxes"></i> Products</a>
+          <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'product_create') || str_contains($_SERVER['PHP_SELF'],'add_product') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/product_create.php"><i class="fas fa-plus-circle"></i> Add Product</a>
+          <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/products.php') || str_contains($_SERVER['PHP_SELF'],'product_edit.php') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/products.php"><i class="fas fa-boxes"></i> Products</a>
           <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/categor') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/categories.php"><i class="fas fa-tags"></i> Categories</a>
           <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/brand') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/brands.php"><i class="fas fa-copyright"></i> Brands</a>
           <a class="collapse-item <?= str_contains($_SERVER['PHP_SELF'],'inventory/imei_search') ? 'active' : '' ?>" href="<?= $base_url ?? '' ?>modules/inventory/imei_search.php"><i class="fas fa-fingerprint"></i> IMEI Search</a>
